@@ -11,7 +11,13 @@ transactions = [
 valid_statuses = {"success", "failed", "pending"}
 
 def clean_amount(amount_str):
-    return float(amount_str.strip())
+    try:
+        float(amount_str.strip())
+    except ValueError:
+        print(f"[ERROR] Invalid value")
+        return 0.0
+    else:
+        return float(amount_str.strip())      
 
 def is_valid_status(status):
     return status.strip().lower() in valid_statuses    
@@ -28,6 +34,8 @@ def find_high_value(transactions, threshold):
     return senders
 
 def top_sender(transactions):
+    if not transactions:
+        return None
     best_so_far = 0
     for ttx in transactions:
         if clean_amount(ttx['amount']) > best_so_far:
