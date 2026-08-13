@@ -78,15 +78,19 @@ class WarehouseEngine:
         print("="*50)
         print(f"{self.warehouse_code:^50}")
         print(f"{'Total active warehouses':<30}{WarehouseEngine.total_warehouses_active:>20}")
+        print("-"*50)
         print(f"{'ITEM ID':<30}{'TOTAL VALUATION'}")
+        print("-"*50)
         for i in self.inventory:
             print(f"{i[0]:<30}{f'{i[3]:.2f}':>20}")
+        print("-"*50)    
         print(f"Error Logs")
         for e in self.error_logs:
             print(f" {e}")
         print("-"*50)
         valuation = self.calculate_total_warehouse_value()
-        print(f"{'Grand Total Warehouse Valuation:':<30}{valuation:>20}")            
+        print(f"{'Grand Total Warehouse Valuation:':<35}{f'{valuation:.2f}':>15}")  
+        print("="*50)          
 
 
 
